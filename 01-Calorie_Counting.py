@@ -1,4 +1,3 @@
-# Part 1
 with open("Counted_Calories.txt", "r") as file:
     my_list = file.read().split('\n')     # Read text file and split the string 'file' by newline to create list.
 
@@ -11,10 +10,12 @@ for x in my_list:
     else:
         lst.append(a)
         a = 0
-print(max(lst))
+
+# Part 1
+print("Part 1:", max(lst))
 
 # Part 2
 lst.sort()
-print(sum(lst[-3:]))
+print("Part 2:", sum(lst[-3:]))
 
 file.close()
