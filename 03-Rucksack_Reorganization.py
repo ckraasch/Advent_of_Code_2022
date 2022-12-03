@@ -35,3 +35,4 @@ for x2 in my_list:
 
 print("Part 2:", sum(lst2))
 
+file.close()
