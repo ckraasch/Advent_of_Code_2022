@@ -14,7 +14,7 @@ for x1 in my_list:
             lst1.append(ltrs.index(i1)+1)
             break
 
-print(sum(lst1))
+print("Part 1:", sum(lst1))
 
 # Part 2
 lst2 = []
@@ -33,5 +33,5 @@ for x2 in my_list:
     else:
         n = n + 1
 
-print(sum(lst2))
+print("Part 2:", sum(lst2))
 
