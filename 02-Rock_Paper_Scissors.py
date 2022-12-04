@@ -1,31 +1,31 @@
 with open("Rock_Paper_Scissors.txt", "r") as file:
-    my_list = file.read().replace(' ', "").splitlines()
+    selection_guide = file.read().replace(' ', "").splitlines()
 
-cde = ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
-lst = []
+all_combinations = ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+num_per_combination = []
 
-for i in cde:
-    cnt = my_list.count(i)
-    lst.append(cnt)
+for round in all_combinations:
+    counter = selection_guide.count(round)
+    num_per_combination.append(counter)
 
 # Part 1
-rps1 = [1, 2, 3, 1, 2, 3, 1, 2, 3]
-ldw1 = [3, 6, 0, 0, 3, 6, 6, 0, 3]
-vals1 = []
+points1_selection = [1, 2, 3, 1, 2, 3, 1, 2, 3]
+points1_outcome = [3, 6, 0, 0, 3, 6, 6, 0, 3]
+total_points1 = []
 
-for x1, a1, b1 in zip(lst, rps1, ldw1):
-    vals1.append(x1 * (a1 + b1))
+for round1, selection1, outcome1 in zip(num_per_combination, points1_selection, points1_outcome):
+    total_points1.append(round1 * (selection1 + outcome1))
 
-print("Part 1:", sum(vals1))
+print("Part 1:", sum(total_points1))
 
 # Part 2
-ldw2 = [0, 3, 6, 0, 3, 6, 0, 3, 6]
-rps2 = [3, 1, 2, 1, 2, 3, 2, 3, 1]
-vals2 = []
+points2_outcome = [0, 3, 6, 0, 3, 6, 0, 3, 6]
+points2_selection = [3, 1, 2, 1, 2, 3, 2, 3, 1]
+total_points2 = []
 
-for x2, a2, b2 in zip(lst, rps2, ldw2):
-    vals2.append(x2 * (a2 + b2))
+for round2, selection2, outcome2 in zip(num_per_combination, points2_selection, points2_outcome):
+    total_points2.append(round2 * (selection2 + outcome2))
 
-print("Part 2:", sum(vals2))
+print("Part 2:", sum(total_points2))
 
 file.close()
