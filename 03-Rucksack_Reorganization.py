@@ -1,38 +1,38 @@
 import string
 
 with open("Rucksack_Contents.txt", "r") as file:
-    my_list = file.read().splitlines()
+    all_contents = file.readlines()
 
-ltrs = list(string.ascii_letters)
+letters_list = list(string.ascii_letters)
 
 # Part 1
-lst1 = []
+duplicate_per_elf = []
 
-for x1 in my_list:
-    for i1 in x1[:len(x1)//2]:
-        if i1 in x1[len(x1)//2:]:
-            lst1.append(ltrs.index(i1)+1)
+for content_per_elf1 in all_contents:
+    for item1 in content_per_elf1[:len(content_per_elf1)//2]:
+        if item1 in content_per_elf1[len(content_per_elf1)//2:]:
+            duplicate_per_elf.append(letters_list.index(item1)+1)
             break
 
-print("Part 1:", sum(lst1))
+print("Part 1:", sum(duplicate_per_elf))
 
 # Part 2
-lst2 = []
-sublst2 = []
+total_duplicates = []
+duplicate_per_group = []
 n = 0
 
-for x2 in my_list:
-    sublst2.append(x2)
+for content_per_elf2 in all_contents:
+    duplicate_per_group.append(content_per_elf2)
     if n == 2:
-        for i2 in sublst2[0]:
-            if i2 in sublst2[1] and i2 in sublst2[2]:
-                lst2.append(ltrs.index(i2)+1)
+        for item2 in duplicate_per_group[0]:
+            if item2 in duplicate_per_group[1] and item2 in duplicate_per_group[2]:
+                total_duplicates.append(letters_list.index(item2)+1)
                 break
         n = 0
-        sublst2 = []
+        duplicate_per_group = []
     else:
         n = n + 1
 
-print("Part 2:", sum(lst2))
+print("Part 2:", sum(total_duplicates))
 
 file.close()
