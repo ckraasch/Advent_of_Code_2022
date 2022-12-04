@@ -1,21 +1,21 @@
 with open("Counted_Calories.txt", "r") as file:
-    my_list = file.read().split('\n')     # Read text file and split the string 'file' by newline to create list.
+    cals_per_item = file.read().split('\n')     # Read text file and split the string 'file' by newline to create list.
 
-lst = []
-a = 0
+cals_per_elf = []
+cal_counter = 0
 
-for x in my_list:
-    if x:
-        a += int(x)
+for item in cals_per_item:
+    if item:
+        cal_counter += int(item)
     else:
-        lst.append(a)
-        a = 0
+        cals_per_elf.append(cal_counter)
+        cal_counter = 0
 
 # Part 1
-print("Part 1:", max(lst))
+print("Part 1:", max(cals_per_elf))
 
 # Part 2
-lst.sort()
-print("Part 2:", sum(lst[-3:]))
+cals_per_elf.sort()
+print("Part 2:", sum(cals_per_elf[-3:]))
 
 file.close()
