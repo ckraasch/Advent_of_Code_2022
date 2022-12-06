@@ -12,8 +12,10 @@ for item in cals_per_item:
         cals_per_elf.append(cal_counter)
         cal_counter = 0
 
+
 # Part 1
 print("Part 1:", max(cals_per_elf))
+
 
 # Part 2
 cals_per_elf.sort()
