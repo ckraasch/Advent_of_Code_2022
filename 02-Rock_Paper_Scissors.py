@@ -9,6 +9,7 @@ for round in all_combinations:
     counter = selection_guide.count(round)
     num_per_combination.append(counter)
 
+
 # Part 1
 points1_selection = [1, 2, 3, 1, 2, 3, 1, 2, 3]
 points1_outcome = [3, 6, 0, 0, 3, 6, 6, 0, 3]
@@ -18,6 +19,7 @@ for round1, selection1, outcome1 in zip(num_per_combination, points1_selection, 
     total_points1 += (round1 * (selection1 + outcome1))
 
 print("Part 1:", total_points1)
+
 
 # Part 2
 points2_outcome = [0, 3, 6, 0, 3, 6, 0, 3, 6]
