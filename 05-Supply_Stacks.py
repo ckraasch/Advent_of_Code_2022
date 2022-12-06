@@ -53,6 +53,7 @@ for element in rearrangement_procedure:
         only_numbers.append(d)
     all_instructions.append(only_numbers)
 
+
 # Part 1
 copy1_stacks = copy.deepcopy(compact_stacks)
 top_boxes1 = ""
@@ -72,6 +73,7 @@ for first_item1 in copy1_stacks:
     top_boxes1 += first_item1[0]
 
 print("Part 1:", top_boxes1)
+
 
 # Part 2
 copy2_stacks = copy.deepcopy(compact_stacks)
