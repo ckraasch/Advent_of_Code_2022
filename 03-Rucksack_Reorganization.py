@@ -6,6 +6,7 @@ with open("Rucksack_Contents.txt", "r") as file:
 
 letters_list = list(string.ascii_letters)
 
+
 # Part 1
 duplicate_per_elf = 0
 
@@ -16,6 +17,7 @@ for content_per_elf1 in all_contents:
             break
 
 print("Part 1:", duplicate_per_elf)
+
 
 # Part 2
 total_duplicates = 0
