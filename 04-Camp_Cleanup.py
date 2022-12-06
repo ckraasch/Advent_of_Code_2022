@@ -1,5 +1,5 @@
 with open('Section_IDs.txt', 'r') as file:
-    all_sections = file.read().replace(",", "\n").replace("-", "\n").splitlines()   # Can I combine the two replace functions?
+    all_sections = file.read().replace(",", "\n").replace("-", "\n").splitlines()
     file.close()
 
 pairs = len(all_sections)//4
