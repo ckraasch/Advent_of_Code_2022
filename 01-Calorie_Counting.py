@@ -1,5 +1,5 @@
 with open("Counted_Calories.txt", "r") as file:
-    cals_per_item = file.read().splitlines()   # Read text file and split the string 'file' by newline to create list.
+    cals_per_item = file.read().splitlines()
     file.close()
 
 cals_per_elf = []
