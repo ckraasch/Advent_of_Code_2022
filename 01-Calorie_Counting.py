@@ -1,5 +1,6 @@
 with open("Counted_Calories.txt", "r") as file:
-    cals_per_item = file.read().split('\n')     # Read text file and split the string 'file' by newline to create list.
+    cals_per_item = file.read().splitlines()   # Read text file and split the string 'file' by newline to create list.
+    file.close()
 
 cals_per_elf = []
 cal_counter = 0
@@ -17,5 +18,3 @@ print("Part 1:", max(cals_per_elf))
 # Part 2
 cals_per_elf.sort()
 print("Part 2:", sum(cals_per_elf[-3:]))
-
-file.close()
