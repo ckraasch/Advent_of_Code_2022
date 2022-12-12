@@ -7,6 +7,7 @@ with open("Starting_Stacks+Rearrangement_Procedure.txt", "r") as file:
 starting_stacks = starting_stacks__rearr_procedure[:9]
 rearrangement_procedure = starting_stacks__rearr_procedure[10:]
 
+# rearranging the elements by stacks (each list is a stack from first(top) to last (bottom))
 row1 = starting_stacks[0]
 row2 = starting_stacks[1]
 row3 = starting_stacks[2]
@@ -20,17 +21,15 @@ letter_position = (1, 5, 9, 13, 17, 21, 25, 29, 33)
 all_stacks1 = []
 n = 0
 
-# rearranging the elements by stacks (each list is a stack from first(top) to last (bottom))
 for stack1 in zip(row1, row2, row3, row4, row5, row6, row7, row8):
     stack1 = list(stack1)
     if n in letter_position:
            all_stacks1.append(stack1)
     n += 1
 
-
+# removing empty spaces at the front of the lists
 compact_stacks = []
 
-# removing empty spaces at the front of the lists
 for list1 in all_stacks1:
     stack2 = []
     m = 0
@@ -41,16 +40,15 @@ for list1 in all_stacks1:
         if m == len(list1):
             compact_stacks.append(stack2)
 
+# removing everything but the numbers in the instructions and making them integers
 no_whitespaces = []
 all_instructions = []
 
-# removing everything but the numbers in the instructions and making them integers
 for element in rearrangement_procedure:
     only_numbers = []
     no_whitespaces = element.split(" ")
     for f in range(1, len(no_whitespaces), 2):
-        d = int(no_whitespaces[f])
-        only_numbers.append(d)
+        only_numbers.append(int(no_whitespaces[f]))
     all_instructions.append(only_numbers)
 
 
