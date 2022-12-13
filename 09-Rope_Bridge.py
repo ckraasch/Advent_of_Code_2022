@@ -3,35 +3,58 @@ with open("Motion_Series_test.txt", "r") as file:
 print(motion_series)
 
 
-tail_position = [[0, 0]]
-head = [0, 0]
-tail = [0, 0]
-down_up = 0
-right_left = 0
-for direction in motion_series:
-    steps = int(direction[2:])
-    if direction[0] == "U":
-        down_up -= steps
-    if direction[0] == "R":
-        right_left += steps
-    if direction[0] == "D":
-        down_up += steps
-    if direction[0] == "L":
-        right_left -= steps
-    head = [right_left, down_up]
-    while head[0]-tail[0] not in [-1, 0, 1] or head[1]-tail[1] not in [-1, 0, 1]:
-        tail_position.append(tail)
-        if head[0] > tail[0]:
-            tail[0] += 1
-        if head[0] < tail[0]:
-            tail[0] -= 1
-        if head[1] > tail[1]:
-            tail[1] += 1
-        if head[1] < tail[1]:
-            tail[1] -= 1
-        tail = [tail[0], tail[1]]
+def move(a1, b1, x1, y1):
+    if abs(x1 - a1) > 1:
+        if x1 > a1:
+            a1 += 1
+            b1 = y1
+        if x1 < a1:
+            a1 -= 1
+            b1 = y1
+    if abs(y1 - b1) > 1:
+        if y1 > b1:
+            b1 += 1
+            a1 = x1
+        if y1 < b1:
+            b1 -= 1
+            a1 = x1
+    return a1, b1
 
 
-temp = []
-[temp.append(x) for x in tail_position if x not in temp]
-print(len(temp))
+x, y = 0, 0
+position = [(0, 0)]
+a, b = 0, 0
+tail = []
+for motion in motion_series:
+    steps = int(motion[2:])
+    if motion[0] in ["R", "L"]:
+        if motion[0] == "R":
+            for i in range(steps):
+                x += 1
+                position.append((x, y))
+                a, b = move(a, b, x, y)
+                tail.append((a, b))
+        else:
+            for i in range(steps):
+                x -= 1
+                position.append((x, y))
+                a, b = move(a, b, x, y)
+                tail.append((a, b))
+    else:
+        if motion[0] == "U":
+            for i in range(steps):
+                y -= 1
+                position.append((x, y))
+                a, b = move(a, b, x, y)
+                tail.append((a, b))
+        else:
+            for i in range(steps):
+                y += 1
+                position.append((x, y))
+                a, b = move(a, b, x, y)
+                tail.append((a, b))
+print(position)
+print(tail)
+print(len(set(tail)))
+
+# Part 2
