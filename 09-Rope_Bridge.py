@@ -1,4 +1,4 @@
-with open("Motion_Series.txt", "r") as file:
+with open("Motion_Series_test.txt", "r") as file:
     motion_series = file.read().splitlines()
 print(motion_series)
 
@@ -43,19 +43,16 @@ for direction in motion_series:
         if head[1] < tail[1]:
             tail[1] -= 1
         tail = [tail[0], tail[1]]
-        # wieso brauche ich diese zeile??
 print(head_position)
 print(tail_position)
 
-height = grid[2] - grid[0] + 1
-width = grid[1] - grid[3] + 1
+# height = grid[2] - grid[0] + 1
+# width = grid[1] - grid[3] + 1
 
-grid = [[0]*height]*width
-print(grid)
+# grid = [[0]*height]*width
+# print(grid)
 
 temp = []
-print(len(tail_position))
-
 [temp.append(x) for x in tail_position if x not in temp]
 
 print(len(temp))
