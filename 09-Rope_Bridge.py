@@ -1,4 +1,4 @@
-with open("Motion_Series-test2.txt", "r") as file:
+with open("Motion_Series-test.txt", "r") as file:
     motion_series = file.read().splitlines()
 print(motion_series)
 
@@ -75,7 +75,7 @@ for motion in motion_series:
     else:
         if motion[0] == "U":
             for i in range(steps):
-                b0 -= 1
+                b0 += 1
                 head.append((a0, b0))
                 a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
@@ -88,7 +88,7 @@ for motion in motion_series:
                 a9, b9 = move(a9, b9, a8, b8, tail)
         else:
             for i in range(steps):
-                b0 += 1
+                b0 -= 1
                 head.append((a0, b0))
                 a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
