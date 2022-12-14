@@ -50,8 +50,10 @@ def revers(input):
         output.append(x)
     return output
 
+
 north_rev = revers(north_view)
 west_rev = revers(west_view)
+
 
 def ic_trees(listname):
     new_list = []
@@ -66,6 +68,7 @@ def ic_trees(listname):
                 counter += 1
         new_list.append(counter)
     return new_list
+
 
 north = ic_trees(north_rev)
 east = ic_trees(east_view)
