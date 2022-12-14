@@ -23,7 +23,7 @@ def move(a, b, x, y, lst):
     return a, b
 
 
-x, y = 0, 0
+a0, b0 = 0, 0
 a1, b1 = 0, 0
 a2, b2 = 0, 0
 a3, b3 = 0, 0
@@ -48,9 +48,9 @@ for motion in motion_series:
     if motion[0] in ["R", "L"]:
         if motion[0] == "R":
             for i in range(steps):
-                x += 1
-                head.append((x, y))
-                a1, b1 = move(a1, b1, x, y, knot1)
+                a0 += 1
+                head.append((a0, b0))
+                a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
                 a3, b3 = move(a3, b3, a2, b2, knot3)
                 a4, b4 = move(a4, b4, a3, b3, knot4)
@@ -61,9 +61,9 @@ for motion in motion_series:
                 a9, b9 = move(a9, b9, a8, b8, tail)
         else:
             for i in range(steps):
-                x -= 1
-                head.append((x, y))
-                a1, b1 = move(a1, b1, x, y, knot1)
+                a0 -= 1
+                head.append((a0, b0))
+                a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
                 a3, b3 = move(a3, b3, a2, b2, knot3)
                 a4, b4 = move(a4, b4, a3, b3, knot4)
@@ -75,9 +75,9 @@ for motion in motion_series:
     else:
         if motion[0] == "U":
             for i in range(steps):
-                y -= 1
-                head.append((x, y))
-                a1, b1 = move(a1, b1, x, y, knot1)
+                b0 -= 1
+                head.append((a0, b0))
+                a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
                 a3, b3 = move(a3, b3, a2, b2, knot3)
                 a4, b4 = move(a4, b4, a3, b3, knot4)
@@ -88,9 +88,9 @@ for motion in motion_series:
                 a9, b9 = move(a9, b9, a8, b8, tail)
         else:
             for i in range(steps):
-                y += 1
-                head.append((x, y))
-                a1, b1 = move(a1, b1, x, y, knot1)
+                b0 += 1
+                head.append((a0, b0))
+                a1, b1 = move(a1, b1, a0, b0, knot1)
                 a2, b2 = move(a2, b2, a1, b1, knot2)
                 a3, b3 = move(a3, b3, a2, b2, knot3)
                 a4, b4 = move(a4, b4, a3, b3, knot4)
