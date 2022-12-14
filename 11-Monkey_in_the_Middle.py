@@ -29,7 +29,20 @@ print(to_monkey)
 
 for n in range(20):
     for items in starting_items:
-        monkey = starting_items.index(monkey)
-        print(monkey)
-        for item in items:
-            if
+        for m in range(len(items)):
+            monkey = starting_items.index(items)
+            old_worry = items[m]
+            if operation[monkey][1:] == "old":
+                value = int(old_worry)
+            else:
+                value = int(operation[monkey][1:])
+            if operation[monkey][0] == "*":
+                new_worry = old_worry * value
+            if operation[monkey][0] == "/":
+                new_worry = old_worry / value
+            if operation[monkey][0] == "+":
+                new_worry = old_worry + value
+            if operation[monkey][0] == "-":
+                new_worry = old_worry - value
+            worry = new_worry//3
+            print(new_worry)
