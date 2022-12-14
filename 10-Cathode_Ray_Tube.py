@@ -1,6 +1,5 @@
-with open("CPU_input-test2.txt", "r") as file:
+with open("CPU_input.txt", "r") as file:
     cpu_input = file.read().splitlines()
-print(cpu_input)
 
 
 def draw(counter0, x0, n0, lst0):
@@ -13,9 +12,7 @@ def draw(counter0, x0, n0, lst0):
 
 
 def cycling(cycle0, signal0, x0, n0, lst0, counter0):
-    print(counter, x0, n0)
     counter0, x0, n0, lst0 = draw(counter0, x0, n0, lst0)
-    print(lst0)
     cycle0 += 1
     if cycle0 == 20 or (cycle0 - 20) % 40 == 0:
         signal0 += (cycle0 * x0)
@@ -32,7 +29,6 @@ signal = 0
 cycle = 0
 x = 1
 for i in cpu_input:
-    print(i)
     if i != "noop":
         cycle, signal, x, n, lst, counter = cycling(cycle, signal, x, n, lst, counter)
         cycle, signal, x, n, lst, counter = cycling(cycle, signal, x, n, lst, counter)
