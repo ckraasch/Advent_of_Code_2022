@@ -1,23 +1,32 @@
-with open("Motion_Series-test.txt", "r") as file:
+with open("Motion_Series.txt", "r") as file:
     motion_series = file.read().splitlines()
 print(motion_series)
 
 
 def move(a, b, x, y, lst):
-    if abs(x - a) > 1:
+    if abs(x - a) > 1 and not abs(y - b) > 1:
         if x > a:
             a += 1
             b = y
         if x < a:
             a -= 1
             b = y
-    if abs(y - b) > 1:
+    if not abs(x - a) > 1 and abs(y - b) > 1:
         if y > b:
             b += 1
             a = x
         if y < b:
             b -= 1
             a = x
+    if abs(x - a) > 1 and abs(y - b) > 1:
+        if y > b:
+            b += 1
+        if y < b:
+            b -= 1
+        if x > a:
+            a += 1
+        if x < a:
+            a -= 1
     if (a, b) not in lst:
         lst.append((a, b))
     return a, b
