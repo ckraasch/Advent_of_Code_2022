@@ -1,5 +1,6 @@
 with open("CPU_input.txt", "r") as file:
     cpu_input = file.read().splitlines()
+    file.close()
 
 
 def draw(counter0, x0, n0, lst0):
