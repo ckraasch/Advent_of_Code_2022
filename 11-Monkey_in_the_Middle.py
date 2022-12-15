@@ -1,7 +1,8 @@
-with open("test1.txt", "r") as file:
+with open("Monkey_Notes.txt", "r") as file:
     monkey_notes = file.read().replace(" ", "").splitlines()
 monkey_notes.append("")
 
+max = 0
 tf = []
 starting_items, operation, test, to_monkey = [], [], [], []
 for note in monkey_notes:
@@ -11,6 +12,8 @@ for note in monkey_notes:
     if note:
         if note[0] == "M":
             monkey = int(note[6:len(note)-1])
+            if max < monkey:
+                max = monkey
         if note[0] == "S":
             items = note[a+1:].split(",")
             for i in items:
@@ -30,10 +33,12 @@ for note in monkey_notes:
         to_monkey.insert(monkey, tf)
         tf = []
 
+inspections = [0]*(max+1)
 for n in range(20):
     for items in starting_items:
         monkeys = starting_items.index(items)
         for m in range(len(items)):
+            inspections[monkeys] += 1
             old_worry = items[m]
             if operation[monkeys][1:] == "old":
                 value = int(old_worry)
@@ -53,4 +58,6 @@ for n in range(20):
             else:
                 starting_items[to_monkey[monkeys][0]].append(worry)
         starting_items[monkeys] = []
-print(starting_items)
+sorted_monkeys = sorted(inspections, reverse=True)
+monkey_business = sorted_monkeys[0]*sorted_monkeys[1]
+print("Part 1:", monkey_business)
