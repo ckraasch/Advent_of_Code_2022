@@ -1,5 +1,6 @@
 with open("Motion_Series.txt", "r") as file:
     motion_series = file.read().splitlines()
+    file.close()
 print(motion_series)
 
 
