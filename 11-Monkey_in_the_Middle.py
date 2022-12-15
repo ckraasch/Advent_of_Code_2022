@@ -1,14 +1,14 @@
 with open("test1.txt", "r") as file:
-    monkey_notes = file.read().replace(" ", "").replace(":", "").replace("Monkey", "").replace("Startingitems", "").replace("Operationnew=old", "").replace("Testdivisibleby", "").replace("Iftruethrowtomonkey", "").replace("Iffalsethrowtomonkey", "").splitlines()
+    monkey_notes = file.read().replace(" ", "").splitlines()
 monkey_notes.append("")
-print(monkey_notes)
 
-"""
-maxi = 0
-tf, starting_items, operation, test, to_monkey = [], [], [], [], []
+
+maxi, monkey = 0, 0
+starting_items, operation, test, to_monkey, tf = [], [], [], [], []
 for note in monkey_notes:
     a = note.find(":")
     items = []
+    true, false = 0, 0
     if note:
         if note[0] == "M":
             monkey = int(note[6:len(note)-1])
@@ -16,7 +16,8 @@ for note in monkey_notes:
                 maxi = monkey
         if note[0] == "S":
             items = note[a+1:].split(",")
-            items = [int(i) for i in items]
+            for i in items:
+                items[items.index(i)] = int(i)
             starting_items.insert(monkey, items)
         if note[0] == "O":
             operation.insert(monkey, note[17:])
@@ -32,10 +33,9 @@ for note in monkey_notes:
         to_monkey.insert(monkey, tf)
         tf = []
 
-
-new_worry, monkey = 0, 0
+monkeys, new_worry = 0, 0
 inspections = [0]*(maxi + 1)
-for n in range(20): # range(10000)
+for n in range(20):
     for items in starting_items:
         monkeys = starting_items.index(items)
         for m in range(len(items)):
@@ -53,7 +53,7 @@ for n in range(20): # range(10000)
                 new_worry = old_worry + value
             if operation[monkeys][0] == "-":
                 new_worry = old_worry - value
-            worry = new_worry//3 # worry = new_worry
+            worry = new_worry//3
             if worry % test[monkeys] == 0:
                 starting_items[to_monkey[monkeys][1]].append(worry)
             else:
@@ -62,4 +62,3 @@ for n in range(20): # range(10000)
 sorted_monkeys = sorted(inspections, reverse=True)
 monkey_business = sorted_monkeys[0]*sorted_monkeys[1]
 print("Part 1:", monkey_business)
-"""
