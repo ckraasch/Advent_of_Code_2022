@@ -1,7 +1,6 @@
 with open("test1.txt", "r") as file:
     monkey_notes = file.read().replace(" ", "").splitlines()
 monkey_notes.append("")
-print(monkey_notes)
 
 tf = []
 starting_items, operation, test, to_monkey = [], [], [], []
@@ -30,10 +29,6 @@ for note in monkey_notes:
     if not note:
         to_monkey.insert(monkey, tf)
         tf = []
-print(starting_items)
-print(operation)
-print(test)
-print(to_monkey)
 
 for n in range(20):
     for items in starting_items:
@@ -57,6 +52,5 @@ for n in range(20):
                 starting_items[to_monkey[monkeys][1]].append(worry)
             else:
                 starting_items[to_monkey[monkeys][0]].append(worry)
-                print(to_monkey[monkeys][1])
         starting_items[monkeys] = []
-        print(monkeys, starting_items)
+print(starting_items)
