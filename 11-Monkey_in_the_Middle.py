@@ -35,28 +35,28 @@ print(operation)
 print(test)
 print(to_monkey)
 
-
-for items in starting_items:
-    monkeys = starting_items.index(items)
-    for m in range(len(items)):
-        old_worry = items[m]
-        if operation[monkeys][1:] == "old":
-            value = int(old_worry)
-        else:
-            value = int(operation[monkeys][1:])
-        if operation[monkeys][0] == "*":
-            new_worry = old_worry * value
-        if operation[monkeys][0] == "/":
-            new_worry = old_worry / value
-        if operation[monkeys][0] == "+":
-            new_worry = old_worry + value
-        if operation[monkeys][0] == "-":
-            new_worry = old_worry - value
-        worry = new_worry//3
-        if worry % test[monkeys] == 0:
-            starting_items[to_monkey[monkeys][1]].append(worry)
-        else:
-            starting_items[to_monkey[monkeys][0]].append(worry)
-            print(to_monkey[monkeys][1])
-    starting_items[monkeys] = []
-    print(monkeys, starting_items)
+for n in range(20):
+    for items in starting_items:
+        monkeys = starting_items.index(items)
+        for m in range(len(items)):
+            old_worry = items[m]
+            if operation[monkeys][1:] == "old":
+                value = int(old_worry)
+            else:
+                value = int(operation[monkeys][1:])
+            if operation[monkeys][0] == "*":
+                new_worry = old_worry * value
+            if operation[monkeys][0] == "/":
+                new_worry = old_worry / value
+            if operation[monkeys][0] == "+":
+                new_worry = old_worry + value
+            if operation[monkeys][0] == "-":
+                new_worry = old_worry - value
+            worry = new_worry//3
+            if worry % test[monkeys] == 0:
+                starting_items[to_monkey[monkeys][1]].append(worry)
+            else:
+                starting_items[to_monkey[monkeys][0]].append(worry)
+                print(to_monkey[monkeys][1])
+        starting_items[monkeys] = []
+        print(monkeys, starting_items)
