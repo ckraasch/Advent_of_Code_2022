@@ -1,11 +1,14 @@
 with open("test1.txt", "r") as file:
     monkey_notes = file.read().replace(" ", "").splitlines()
 monkey_notes.append("")
+print(monkey_notes)
 
-to_monkey, starting_items, operation, test = [], [], [], []
+tf = []
+starting_items, operation, test, to_monkey = [], [], [], []
 for note in monkey_notes:
     a = note.find(":")
     items = []
+    true, false = 0, 0
     if note:
         if note[0] == "M":
             monkey = int(note[6:len(note)-1])
@@ -19,9 +22,14 @@ for note in monkey_notes:
         if note[0] == "T":
             test.insert(monkey, int(note[16:]))
         if note[0:3] == "Ift":
-            true = int(note[20])
-            false = int(monkey_notes[monkey_notes.index(note)+1][21])
-            to_monkey.insert(monkey, (true, false))
+            t = int(note[20:])
+            tf.insert(0, t)
+        if note[0:3] == "Iff":
+            f = int(note[21:])
+            tf.insert(0, f)
+    if not note:
+        to_monkey.insert(monkey, tf)
+        tf = []
 print(starting_items)
 print(operation)
 print(test)
@@ -45,4 +53,7 @@ for n in range(20):
             if operation[monkey][0] == "-":
                 new_worry = old_worry - value
             worry = new_worry//3
-            print(new_worry)
+            """if worry % test[monkey] == 0:
+                print(to_monkey[0])
+            else:
+                print(to_monkey[1])"""
